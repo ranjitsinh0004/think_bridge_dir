@@ -1,0 +1,55 @@
+<html>
+    {% extends 'base.html' %}
+    {% block title %}Home{% endblock title %}
+    {% block content %}
+    <head>
+        <style>
+                 .tab { 
+            display: inline-block; 
+            margin-right: 550px; 
+                 }
+        </style>
+   
+    </head>
+    <div class="jumbotron">
+        <h1 class="display-5">Welcome to Sadguru's Amrit-Tulya</h1>
+        <p class="lead">Menu</p>
+        <p class="lead">
+            {% for product in object_list %}
+            {%if product.choice == "1" %}
+                {%if forloop.first%}
+                    <p class="lead">Beverages</p>
+                    <div class="card">
+                        <div class="card-header">
+                            <span class="font-weight-bold"><a href="{% url 'product_detail' product.pk %}" >{{ product.name }}</a></span> &middot;
+                            <span class="text-muted">Rs. {{ product.price }} <p align="right"><a href="{% url 'product_delete' product.pk %}">Delete</a> </p></span> 
+                        </div>
+                    </div>
+                    {%else%}
+                    <div class="card">
+                        <div class="card-header">
+                            <span class="font-weight-bold"><a href="{% url 'product_detail' product.pk %}" >{{ product.name }}</a></span> &middot;
+                            <span class="text-muted">Rs. {{ product.price }} <p align="right"><a href="{% url 'product_delete' product.pk %}">Delete</a> </p></span> 
+                        </div>
+                    </div>
+                {% endif %}
+            {% endif %}
+            {% endfor %}
+            <br>
+            <p class="lead">Snacks</p>
+            {% for product in object_list %}
+                {% if  product.choice == "2" %}
+                    <div class="card">
+                        <div class="card-header">
+                            <span class="font-weight-bold"><a href="{% url 'product_detail' product.pk %}" >{{ product.name }}</a></span> &middot;
+                            <span class="text-muted">Rs. {{ product.price }} <p align="right"><a href="{% url 'product_delete' product.pk %}">Delete</a> </p></span> 
+                        </div>
+                    </div>
+                    
+                {% endif %}
+            {% endfor %}
+        </p>
+    </div>
+    {% endblock content %}
+
+</html>

@@ -1,0 +1,26 @@
+<html>
+    {% extends 'base.html' %}
+    {% load crispy_forms_tags %}
+    {% block content %}
+        <div class="jumbotron">
+            <h1 class="display-5">Welcome to Sadguru's Amrit-Tulya</h1>
+            <p class="lead">
+                    <div class="card">
+                        <div class="card-header">
+                            <span class="font-weight-bold">New product</span> &middot;
+                        </div>
+                        <div class="card-body">
+                            <span class="text-muted">
+                                <form action="" method="post">{% csrf_token %}
+                                    {{ form| crispy }}
+                                    <br>
+                                   <span><button class="btn btn-success ml-2" type="submit">Save</button></span> 
+                                </form>
+                            </span>                           
+                        </div>
+                    </div>
+                    <br />
+            </p>
+        </div>
+        {% endblock content %}
+</html>

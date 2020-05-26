@@ -1,0 +1,21 @@
+<html>
+    {% extends 'api_base.html' %}
+    
+    {% block content %}       
+    <body>
+        {% for product in data %}
+            {%if product.choice == "1" %}
+                {%if forloop.first%}
+                <h1>consuming third party APIs demo....</h1><hr>
+                <h2>your product information: </h2>
+                <h3>product Id: {{product.id}}</h3>
+                <h3>product Choice: {{product.choice}}</h3>
+                <h3>product Name: {{product.name}}</h3>
+                <h3>product Description: {{product.description}}</h3>
+                <h3>product price: {{product.price}}</h3>
+                {%endif%}
+            {%endif%}
+        {%endfor%}
+    </body>
+    {% endblock content %}
+</html>
